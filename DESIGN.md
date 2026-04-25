@@ -158,15 +158,18 @@ import { Checkbox } from '@musinsa/mcds';
 
 ### Table (`components/Table.tsx`)
 
+> ℹ️ **참고**: MCDS Storybook에도 Table이 있으나 Ant Design 기반(antd 태그)입니다.
+> 현재는 커스텀 Table을 사용하며, dev팀 확인 후 MCDS Table로 마이그레이션 가능합니다.
+
 ```tsx
-import { Table } from './components/Table';
+import { Table, TableColumn } from './components/Table';
 
 <Table
   columns={[
     { key: 'no', title: 'No.', width: 60, align: 'center' },
     { key: 'productName', title: '상품명', minWidth: 200 },
     { key: 'status', title: '판매상태', width: 100,
-      render: (value) => <Tag>{value}</Tag> },
+      render: (value) => <Tag variant="solid" color="blue">{value}</Tag> },
     { key: 'price', title: '판매가', width: 120, align: 'right', sortable: true },
     { key: 'createdAt', title: '등록일', width: 120, sortable: true },
   ]}
@@ -519,7 +522,8 @@ message.error('저장에 실패했습니다. 다시 시도해주세요.');
 
 ## 6. 절대 하지 말 것 (금지 규칙)
 
-- ❌ MCDS 외의 외부 컴포넌트 라이브러리 설치 금지 (antd, MUI 등)
+- ❌ MUI, Material UI 등 MCDS와 무관한 외부 라이브러리 설치 금지
+- ⚠️ antd: MCDS Table이 내부적으로 Ant Design 기반 — 직접 설치 후 사용은 dev팀과 협의
 - ❌ 임의 색상 사용 금지 — 반드시 토큰 변수 사용
 - ❌ 폰트 패밀리 변경 금지 — Pretendard만 사용
 - ❌ Primary 버튼 2개 이상 동시 사용 금지
